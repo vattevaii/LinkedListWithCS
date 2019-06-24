@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 
 namespace LinkList
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             LIST list = null;
-            bool b = new bool();
+            bool b;
             do
             {
                 b = true;
@@ -18,6 +18,7 @@ namespace LinkList
                 const string F = " 4 -- Go To A List\n";
                 const string C = " 5 -- Exit\n";
                 const string D = " Please Insert Valid Choice\n";
+                // TODO   Merge 2 Similar types of List  in main 
                 Console.WriteLine(A+B+E+F+C);
                 Console.Write("Your Choice : ");
                 string choice = Console.ReadLine();
@@ -54,7 +55,7 @@ namespace LinkList
         /// <returns></returns>
         private static int ValidInput(string a)
         {
-            int input = 0;
+            int input;
             bool tries = true;
             do
             {
@@ -62,8 +63,15 @@ namespace LinkList
                     Console.WriteLine("Please Enter Valid Number\n");
                 Console.Write(a);
                 string s = Console.ReadLine();
-                input = 0;
-                tries = int.TryParse(s, out input);
+
+                if (!int.TryParse(s, out input))
+                {
+                    tries = false;
+                }
+                else
+                {
+                    tries = true;
+                }
                 input--;
                 //input of less than 0
                 if (input < 0)
@@ -150,7 +158,7 @@ namespace LinkList
                 else if (p == null)
                 {
                     ll = l.GetNext();
-                    l = null;
+                    //l = null;
                     Console.WriteLine($"List {input + 1} was deleted..");
                 }
                 //Delete Parent->next
@@ -170,7 +178,7 @@ namespace LinkList
         /// <param name="ll"></param>
         private static void CreateList(ref LIST ll)
         {
-            int ind = new int();
+            int ind; // = new int();
             if(ll == null)
             {
                 ll = new LIST();
