@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -53,7 +53,7 @@ namespace LinkList
 
         public void LoadList()
         {
-            bool b = new bool();
+            bool b;
             if (type == "")
             {
                 do
